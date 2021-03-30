@@ -1,6 +1,7 @@
 package com.bezkoder.springjwt.payload.request;
 
-import java.sql.Date;
+import java.util.Arrays;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,29 +18,61 @@ import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 public class Classifieds {
 	
 	
-	public Classifieds(String title, String description, String banner, Date todate, Date fromdate, byte[] picByte) {
+	
+
+	public Classifieds() {
 		super();
-		this.title = title;
-		this.description = description;
-		this.banner = banner;
-		this.todate = todate;
-		this.fromdate = fromdate;
-		this.picByte = picByte;
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public String toString() {
+		return "Classifieds [title=" + title + ", createddate=" + createddate + ", fileName=" + fileName
+				+ ", description=" + description + ", banner=" + banner + ", todate=" + todate + ", fromdate="
+				+ fromdate + ", picByte=" + Arrays.toString(picByte) + "]";
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
+	
+	private Date createddate;
+	@Column(name="file_name")
+	private String fileName;
 	private String description;
+	public Classifieds(String title, Date createddate, String fileName, String description, String banner, Date todate,
+			Date fromdate, byte[] picByte) {
+		super();
+		this.title = title;
+		this.createddate = createddate;
+		this.fileName = fileName;
+		this.description = description;
+		this.banner = banner;
+		this.todate = todate;
+		this.fromdate = fromdate;
+		this.picByte = picByte;
+	}
+	public Date getCreateddate() {
+		return createddate;
+	}
+	public void setCreateddate(Date createddate) {
+		this.createddate = createddate;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	private String banner;
 	@JsonFormat(pattern="yyyy-MM-dd", shape=Shape.STRING)
 	private Date todate;
-	@JsonFormat(pattern="yyyy-MM-dd")
+	@JsonFormat(pattern="yyyy-MM-dd" , shape=Shape.STRING)
 	private Date fromdate;
 	 //image bytes can have large lengths so we specify a value
     //which is more than the default length for picByte column
-	@Column(name = "picByte", length = 1000)
+	@Column(name = "picByte")
 	private byte[] picByte;
 
 	public Long getId() {

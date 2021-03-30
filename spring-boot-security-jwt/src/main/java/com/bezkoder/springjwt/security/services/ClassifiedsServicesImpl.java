@@ -1,4 +1,6 @@
 package com.bezkoder.springjwt.security.services;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +12,7 @@ public class ClassifiedsServicesImpl implements ClassifiedsServices {
 @Autowired
 ClassifiedsRepository classifiedsRepository;
 	@Override
-	public Iterable<Classifieds> findAll() {
+	public List<Classifieds> findAll() {
 		
 		return classifiedsRepository.findAll();
 	}
@@ -19,6 +21,10 @@ ClassifiedsRepository classifiedsRepository;
 	public Classifieds save(Classifieds classifieds) {
 		
 		return classifiedsRepository.save(classifieds);
+	}
+	@Override
+	  public Classifieds findById(long id) {
+		return classifiedsRepository.findById(id);
 	}
 
 }
