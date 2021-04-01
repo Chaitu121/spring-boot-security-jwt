@@ -52,6 +52,7 @@ public class AdminController {
 	
 	@GetMapping("user/{id}")
 	public ResponseEntity<?> getUser(@PathVariable("id") Long id) {
+		System.out.println("hellosssss");
 		User userdetails=userServices.findById(id);
 	      return new ResponseEntity(userdetails, HttpStatus.OK);
 	}
