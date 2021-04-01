@@ -15,11 +15,13 @@ import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 @Entity
 @Table(	name = "classifieds")
-public class Classifieds {
-	
-	
-	
+public class Classifieds { 
 
+	
+	
+	private String name;
+	
+	
 	public Classifieds() {
 		super();
 		// TODO Auto-generated constructor stub
